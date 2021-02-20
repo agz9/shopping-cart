@@ -41,19 +41,21 @@ def to_usd(my_price):
 
 print(products)
 
-# ask the user for a product identifier?
+# ask the user for a product identifier to match with the id above 
 
 selected_id = input("Please input a product identifier (corresponding number between 1 and 20): ")
-#print(selected_id)
-#print(type(selected_id))
-#selected_id = int(selected_id)
+#print(selected_id) -- used while I practiced the code to make sure the input was printed correctly
+#print(type(selected_id)) -- lets us know what type user input is (e.g., str)
+#selected_id = int(selected_id) -- converts str to int
 
+# how can we look up information about the product with the given identifier?
 
+#print(products[0]["id"] == selected_id)
 
-
-#
-# INFORMATION DISPLAY/OUTPUT 
-#
+matching_products = [item for item in products if str(item["id"]) == str(selected_id)]
+# converts the user input and the product ID as type string 
+matching_product = matching_products[0]
+print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
 
 
 # REQUIREMENTS
