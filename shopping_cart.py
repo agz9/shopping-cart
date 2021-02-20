@@ -1,4 +1,18 @@
 # shopping_cart.py
+# Annabelle Zebrowski
+# OPIM 243 
+# 02/24/2021
+# Professor Rossetti 
+
+# REQUIREMENTS
+# A grocery store name of your choice 
+# A grocery store phone number and/or website URL and/or address of choice
+# The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
+# The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
+# The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
+# The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
+# The total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
+# A friendly message thanking the customer and/or encouraging the customer to shop again
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -25,20 +39,8 @@ products = [
 
 # TODO: write some Python code here to produce the desired output
 
+# prints all of the products 
 print(products)
-
-def to_usd(my_price):
-    """
-    Converts a numeric value to usd-formatted string, for printing and display purposes.
-
-    Param: my_price (int or float) like 4000.444444
-
-    Example: to_usd(4000.444444)
-
-    Returns: $4,000.44
-    """
-    return f"${my_price:,.2f}" #> $12,000.71
-
 
 total_price = 0
 # set to zero so that prices can be added as the user inputs items 
@@ -49,7 +51,7 @@ while True:
 # allows the user to look up multiple products
 
     # ask the user for product identifiers to match with the ids above 
-    selected_id = input("Please input a product identifier (corresponding number between 1 and 20): ")
+    selected_id = input("Please input a product identifier (corresponding number between 1 and 20). When you are complete, type DONE: ")
     #print(selected_id) -- used while I practiced the code to make sure the input was printed correctly
     #print(type(selected_id)) -- lets us know what type user input is (e.g., str)
     #selected_id = int(selected_id) -- converts str to int
@@ -57,11 +59,28 @@ while True:
     #> "DONE" -- the user has no more products to purchase
     if selected_id == "DONE":
          break 
-         # breaks out of the loop, opposed to giving an error message
+         # breaks out of the loop, as opposed to giving an error message
     else:
         selected_ids.append(selected_id)
         # adds each selected product to a running list 
 
+def to_usd(my_price):
+    """
+    Converts a numeric value to usd-formatted string, for printing and display purposes.
+    Param: my_price (int or float) like 4000.444444
+    Example: to_usd(4000.444444)
+    Returns: $4,000.44
+    """
+    return f"${my_price:,.2f}" #> $12,000.71
+    # 
+
+print("-------------------------")
+print("TRADER JOE'S GLOVER PARK")
+print("https://www.traderjoes.com/")
+print("-------------------------")
+print("CHECKOUT AT: 2021-02-20 3:44 PM")
+print("-------------------------")
+print("SELECTED PRODUCTS:")
 # information display for the user 
 # print(selected_ids)
 for selected_id in selected_ids:
@@ -71,39 +90,18 @@ for selected_id in selected_ids:
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
     # adds each price to a running total of the prices 
-    print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
-    # we do not want to print the price for every item, but we could with the above code 
-
-# print("TOTAL PRICE: " + str(total_price)) # we will later format as USD 
-
+    print(str(matching_product["name"]) + " " + (to_usd(matching_product["price"])))
+    # prints all of the products that were purchased along with their prices 
 print("-------------------------")
-print("TRADER JOE'S GLOVER PARK")
-print("https://www.traderjoes.com/")
-print("-------------------------")
-print("CHECKOUT AT: 2021-02-20 3:44 PM")
-print("-------------------------")
-print("SELECTED PRODUCTS:")
-# LIST OF PRODUCTS
-#
-#
-#
-print("-------------------------")
-# SUBTOTAL
-print("SUBTOTAL: " + )
-# TAX 
-print("TAX: " + )
-# TOTAL 
-print("TOTAL: " + )
+# subtotal of products before taxes 
+subtotal = str(total_price)
+print("SUBTOTAL: " + to_usd(float(subtotal)))
+# calculating sales tax using NYC's rate of 8.75% 
+sales_tax = float(subtotal) * 0.0875
+print("TAX: ", to_usd(sales_tax))
+# total including prices for the customer to see  
+price_total = sales_tax + float(subtotal)
+print("TOTAL: " + to_usd(price_total))
 print("-------------------------")
 print("THANK YOU! WE HOPE TO SEE YOU SOON!")
 print("-------------------------")
-
-# REQUIREMENTS
-# A grocery store name of your choice 
-# A grocery store phone number and/or website URL and/or address of choice
-# The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
-# The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
-# The total cost of all shopping cart items (i.e. the "subtotal"), formatted as US dollars and cents (e.g. $19.47), calculated as the sum of their prices
-# The amount of tax owed (e.g. $1.70), calculated by multiplying the total cost by a New York City sales tax rate of 8.75% (for the purposes of this project, groceries are not exempt from sales tax)
-# The total amount owed, formatted as US dollars and cents (e.g. $21.17), calculated by adding together the amount of tax owed plus the total cost of all shopping cart items
-# A friendly message thanking the customer and/or encouraging the customer to shop again
