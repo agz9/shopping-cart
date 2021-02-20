@@ -72,8 +72,9 @@ def to_usd(my_price):
     Returns: $4,000.44
     """
     return f"${my_price:,.2f}" #> $12,000.71
-    # 
-
+    # allows us to use to_usd to add a dollar sign to the amount and round to 2 decimal points 
+print("SHOPPING CART IDENTIFIERS: ", selected_ids)
+# prints a list of all of the identifiers chosen 
 print("-------------------------")
 print("TRADER JOE'S GLOVER PARK")
 print("https://www.traderjoes.com/")
@@ -90,7 +91,7 @@ for selected_id in selected_ids:
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
     # adds each price to a running total of the prices 
-    print(str(matching_product["name"]) + " " + (to_usd(matching_product["price"])))
+    print("+", str(matching_product["name"]) + " " + (to_usd(matching_product["price"])))
     # prints all of the products that were purchased along with their prices 
 print("-------------------------")
 # subtotal of products before taxes 
@@ -98,7 +99,7 @@ subtotal = str(total_price)
 print("SUBTOTAL: " + to_usd(float(subtotal)))
 # calculating sales tax using NYC's rate of 8.75% 
 sales_tax = float(subtotal) * 0.0875
-print("TAX: ", to_usd(sales_tax))
+print("NYC SALES TAX (8.75%): ", to_usd(sales_tax))
 # total including prices for the customer to see  
 price_total = sales_tax + float(subtotal)
 print("TOTAL: " + to_usd(price_total))
