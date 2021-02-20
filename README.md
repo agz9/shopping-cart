@@ -1,6 +1,6 @@
 # Shopping Cart Exercise! 
 
-[Project Descpription]
+Project Descpription
 (https://github.com/prof-rossetti/intro-to-python/blob/master/projects/shopping-cart/README.md)
 
 ## Installation
