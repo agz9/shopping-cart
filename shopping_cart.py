@@ -45,6 +45,8 @@ print(products)
 
 total_price = 0
 # set to zero so that prices can be added as the user inputs items 
+selected_ids = []
+# empty list so we can later print a list of the selected products 
 
 while True:
 # allows the user to look up multiple products
@@ -59,15 +61,21 @@ while True:
          break 
          # breaks out of the loop, opposed to giving an error message
     else:
-        # look up information about products with the given identifiers
-        matching_products = [item for item in products if str(item["id"]) == str(selected_id)]
-        # converts the user input and the product ID as type string 
-        matching_product = matching_products[0]
-        total_price = total_price + matching_product["price"]
-        print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
+        selected_ids.append(selected_id)
+        # adds each selected product to a running list 
 
 # information display for the user 
-
+# print(selected_ids)
+for selected_id in selected_ids:
+    # look up information about products with the given identifiers
+    matching_products = [item for item in products if str(item["id"]) == str(selected_id)]
+    # converts the user input and the product ID as type string 
+    matching_product = matching_products[0]
+    total_price = total_price + matching_product["price"]
+    # adds each price to a running total of the prices 
+    print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
+    # we do not want to print the price for every item, but we could with the above code 
+    
 
 print("TOTAL PRICE: " + str(total_price)) # we will later format as USD 
 
