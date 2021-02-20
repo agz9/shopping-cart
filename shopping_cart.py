@@ -41,6 +41,20 @@ def to_usd(my_price):
 
 print(products)
 
+# ask the user for a product identifier?
+
+selected_id = input("Please input a product identifier (corresponding number between 1 and 20): ")
+#print(selected_id)
+#print(type(selected_id))
+#selected_id = int(selected_id)
+
+
+
+
+#
+# INFORMATION DISPLAY/OUTPUT 
+#
+
 
 # REQUIREMENTS
 # A grocery store name of your choice
