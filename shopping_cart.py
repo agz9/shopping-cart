@@ -23,6 +23,9 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
+# TODO: write some Python code here to produce the desired output
+
+print(products)
 
 def to_usd(my_price):
     """
@@ -37,12 +40,6 @@ def to_usd(my_price):
     return f"${my_price:,.2f}" #> $12,000.71
 
 
-# TODO: write some Python code here to produce the desired output
-
-print(products)
-
-# ask the user for product identifiers to match with the ids above 
-
 total_price = 0
 # set to zero so that prices can be added as the user inputs items 
 selected_ids = []
@@ -51,6 +48,7 @@ selected_ids = []
 while True:
 # allows the user to look up multiple products
 
+    # ask the user for product identifiers to match with the ids above 
     selected_id = input("Please input a product identifier (corresponding number between 1 and 20): ")
     #print(selected_id) -- used while I practiced the code to make sure the input was printed correctly
     #print(type(selected_id)) -- lets us know what type user input is (e.g., str)
@@ -75,12 +73,33 @@ for selected_id in selected_ids:
     # adds each price to a running total of the prices 
     print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
     # we do not want to print the price for every item, but we could with the above code 
-    
 
-print("TOTAL PRICE: " + str(total_price)) # we will later format as USD 
+# print("TOTAL PRICE: " + str(total_price)) # we will later format as USD 
+
+print("-------------------------")
+print("TRADER JOE'S GLOVER PARK")
+print("https://www.traderjoes.com/")
+print("-------------------------")
+print("CHECKOUT AT: 2021-02-20 3:44 PM")
+print("-------------------------")
+print("SELECTED PRODUCTS:")
+# LIST OF PRODUCTS
+#
+#
+#
+print("-------------------------")
+# SUBTOTAL
+print("SUBTOTAL: " + )
+# TAX 
+print("TAX: " + )
+# TOTAL 
+print("TOTAL: " + )
+print("-------------------------")
+print("THANK YOU! WE HOPE TO SEE YOU SOON!")
+print("-------------------------")
 
 # REQUIREMENTS
-# A grocery store name of your choice
+# A grocery store name of your choice 
 # A grocery store phone number and/or website URL and/or address of choice
 # The date and time of the beginning of the checkout process, formatted in a human-friendly way (e.g. 2020-02-07 03:54 PM)
 # The name and price of each shopping cart item, price being formatted as US dollars and cents (e.g. $3.50, etc.)
