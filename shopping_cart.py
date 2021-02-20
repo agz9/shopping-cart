@@ -41,8 +41,10 @@ def to_usd(my_price):
 
 print(products)
 
-# how can we look up information about the product with the given identifier?
 # ask the user for product identifiers to match with the ids above 
+
+total_price = 0
+# set to zero so that prices can be added as the user inputs items 
 
 while True:
 # allows the user to look up multiple products
@@ -55,14 +57,19 @@ while True:
     #> "DONE" -- the user has no more products to purchase
     if selected_id == "DONE":
          break 
-         # breaks out of the loop
+         # breaks out of the loop, opposed to giving an error message
     else:
         # look up information about products with the given identifiers
         matching_products = [item for item in products if str(item["id"]) == str(selected_id)]
         # converts the user input and the product ID as type string 
         matching_product = matching_products[0]
+        total_price = total_price + matching_product["price"]
         print("SELECTED PRODUCT: " + str(matching_product["name"]) + " " + str(matching_product["price"]))
 
+# information display for the user 
+
+
+print("TOTAL PRICE: " + str(total_price)) # we will later format as USD 
 
 # REQUIREMENTS
 # A grocery store name of your choice
