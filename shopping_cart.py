@@ -39,31 +39,6 @@ products = [
 
 # TODO: write some Python code here to produce the desired output
 
-# prints all of the products 
-print(products)
-
-total_price = 0
-# set to zero so that prices can be added as the user inputs items 
-selected_ids = []
-# empty list so we can later print a list of the selected products 
-
-while True:
-# allows the user to look up multiple products
-
-    # ask the user for product identifiers to match with the ids above 
-    selected_id = input("Please input a product identifier (corresponding number between 1 and 20). When you are complete, type DONE: ")
-    #print(selected_id) -- used while I practiced the code to make sure the input was printed correctly
-    #print(type(selected_id)) -- lets us know what type user input is (e.g., str)
-    #selected_id = int(selected_id) -- converts str to int
-
-    #> "DONE" -- the user has no more products to purchase
-    if selected_id == "DONE":
-         break 
-         # breaks out of the loop, as opposed to giving an error message
-    else:
-        selected_ids.append(selected_id)
-        # adds each selected product to a running list 
-
 def to_usd(my_price):
     """
     Converts a numeric value to usd-formatted string, for printing and display purposes.
@@ -72,14 +47,58 @@ def to_usd(my_price):
     Returns: $4,000.44
     """
     return f"${my_price:,.2f}" #> $12,000.71
-    # allows us to use to_usd to add a dollar sign to the amount and round to 2 decimal points 
+    # allows us to use to_usd to add a dollar sign to the amount and round to 2 decimal points
+
+print("--------------")
+print("THERE ARE", len(products), "PRODUCTS:")
+print("--------------")
+
+for item in products:
+    print(item["id"], item["name"], to_usd(item["price"]))
+# prints each product and its price in an easier format for the customer to buy 
+
+# prints all of the products 
+# print(products)
+
+
+total_price = 0
+# set to zero so that prices can be added as the user inputs items 
+selected_ids = []
+# empty list so we can later print a list of the selected products 
+
+while True:
+# allows the user to look up multiple products
+    # ask the user for product identifiers to match with the ids above 
+    selected_id = input("Please input a product identifier (corresponding number between 1 and 20). When you are complete, type DONE: ")
+    # print(selected_id) -- used while I practiced the code to make sure the input was printed correctly
+    # print(type(selected_id)) -- lets us know what type user input is (e.g., str)
+    # selected_id = int(selected_id) -- converts str to int
+    #> "DONE" -- the user has no more products to purchase
+    if selected_id == "DONE":
+        break 
+         # breaks out of the loop, as opposed to giving an error message
+    elif int(selected_id) <= 0 or int(selected_id) >= 21:
+        selected_id = input("Oops! Please select a valid number 1-20: ")
+        selected_ids.append(selected_id)
+    else:
+        selected_ids.append(selected_id)
+        # adds each selected product to a running list
+
 print("SHOPPING CART IDENTIFIERS: ", selected_ids)
-# prints a list of all of the identifiers chosen 
+print("-------------------------")
 print("-------------------------")
 print("TRADER JOE'S GLOVER PARK")
 print("https://www.traderjoes.com/")
 print("-------------------------")
-print("CHECKOUT AT: 2021-02-20 3:44 PM")
+
+# credit to https://www.programiz.com/python-programming/time
+import time
+# allows us to use time. functions 
+named_tuple = time.localtime() 
+# get struct_time
+time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
+print(("CHECKOUT AT:"), time_string)
+
 print("-------------------------")
 print("SELECTED PRODUCTS:")
 # information display for the user 
@@ -94,15 +113,17 @@ for selected_id in selected_ids:
     print("+", str(matching_product["name"]) + " " + (to_usd(matching_product["price"])))
     # prints all of the products that were purchased along with their prices 
 print("-------------------------")
+
 # subtotal of products before taxes 
 subtotal = str(total_price)
 print("SUBTOTAL: " + to_usd(float(subtotal)))
 # calculating sales tax using NYC's rate of 8.75% 
 sales_tax = float(subtotal) * 0.0875
-print("NYC SALES TAX (8.75%): ", to_usd(sales_tax))
+print("NYC SALES TAX (8.75%):", to_usd(sales_tax))
 # total including prices for the customer to see  
 price_total = sales_tax + float(subtotal)
 print("TOTAL: " + to_usd(price_total))
+
 print("-------------------------")
-print("THANK YOU! WE HOPE TO SEE YOU SOON!")
+print("THANK YOU! WE HOPE TO SEE YOU AGAIN SOON!")
 print("-------------------------")
